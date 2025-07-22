@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aluguel de Caçambas - Remoção de Entulho</title>
+    <meta name="description" content="Aluguel de caçambas para remoção de entulho. Serviço rápido e confiável para obras e reformas.">
+    
+    <!-- Preload critical resources -->
+    <link rel="preload" href="fonts/QSZAqrMu74mB.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="fonts/TCNMDP1yBuew.woff2" as="font" type="font/woff2" crossorigin>
+    
+    <!-- Load polyfill first -->
+    <script src="js/radpack-polyfill.js"></script>
+    
+    <style>
+        /* Font faces */
+        @font-face {
+            font-family: 'Squada One';
+            src: url('fonts/QSZAqrMu74mB.woff2') format('woff2');
+            font-weight: 400;
+            font-display: swap;
+        }
+        
+        @font-face {
+            font-family: 'Share';
+            src: url('fonts/TCNMDP1yBuew.woff2') format('woff2');
+            font-weight: 400;
+            font-display: swap;
+        }
+
+        /* Reset and base styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Share', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #fff;
+        }
+
+        /* Header styles */
+        .header {
+            background: linear-gradient(135deg, #dbc414 0%, #f4d03f 100%);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            font-family: 'Squada One', sans-serif;
+            font-size: 2rem;
+            font-weight: 400;
+            color: #111;
+            text-transform: uppercase;
+            letter-spacing: 0.02em;
+        }
+
+        .contact-info {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .contact-item {
+            color: #111;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .contact-item:hover {
+            color: #333;
+        }
+
+        /* Hero section */
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('images/CAMBANCA.png');
+            background-size: cover;
+            background-position: center;
+            min-height: 70vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            padding: 2rem;
+        }
+
+        .hero h1 {
+            font-family: 'Squada One', sans-serif;
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.02em;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            margin-bottom: 2rem;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: #dbc414;
+            color: #111;
+            padding: 1rem 2rem;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .cta-button:hover {
+            background: #f4d03f;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        /* Services section */
+        .services {
+            padding: 4rem 0;
+            background: #f8f9fa;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .section-title {
+            font-family: 'Squada One', sans-serif;
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            color: #111;
+            text-transform: uppercase;
+            letter-spacing: 0.02em;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .service-card h3 {
+            font-family: 'Squada One', sans-serif;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #dbc414;
+            text-transform: uppercase;
+        }
+
+        /* Contact section */
+        .contact {
+            padding: 4rem 0;
+            background: #111;
+            color: white;
+        }
+
+        .contact-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+        }
+
+        .contact-info-section h3 {
+            font-family: 'Squada One', sans-serif;
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            color: #dbc414;
+            text-transform: uppercase;
+        }
+
+        .contact-details {
+            list-style: none;
+        }
+
+        .contact-details li {
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+
+        .hours-list {
+            list-style: none;
+        }
+
+        .hours-list li {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+            padding: 0.5rem 0;
+            border-bottom: 1px solid #333;
+        }
+
+        /* Footer */
+        .footer {
+            background: #000;
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .footer-logo {
+            font-family: 'Squada One', sans-serif;
+            font-size: 1.5rem;
+            color: #dbc414;
+            text-transform: uppercase;
+        }
+
+        .footer-security {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .footer-security img {
+            height: 50px;
+            width: auto;
+        }
+
+        .footer-text {
+            font-size: 0.9rem;
+            color: #ccc;
+        }
+
+        /* WhatsApp floating button */
+        .whatsapp-float {
+            position: fixed;
+            width: 60px;
+            height: 60px;
+            bottom: 40px;
+            right: 40px;
+            background-color: #25d366;
+            color: #FFF;
+            border-radius: 50px;
+            text-align: center;
+            font-size: 30px;
+            box-shadow: 2px 2px 3px #999;
+            z-index: 100;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+        }
+
+        .whatsapp-float:hover {
+            background-color: #128c7e;
+            transform: scale(1.1);
+        }
+
+        .whatsapp-float svg {
+            width: 32px;
+            height: 32px;
+            fill: white;
+        }
+
+        /* Marquee styles */
+        .marquee {
+            background: #dbc414;
+            padding: 1rem 0;
+            overflow: hidden;
+            white-space: nowrap;
+        }
+
+        .marquee-content {
+            display: inline-block;
+            animation: scroll 20s linear infinite;
+            font-family: 'Squada One', sans-serif;
+            font-size: 1.2rem;
+            color: #111;
+            text-transform: uppercase;
+        }
+
+        @keyframes scroll {
+            0% { transform: translateX(100%); }
+            100% { transform: translateX(-100%); }
+        }
+
+        /* Responsive design */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .contact-info {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1.1rem;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-content {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-content {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .whatsapp-float {
+                width: 50px;
+                height: 50px;
+                bottom: 20px;
+                right: 20px;
+                font-size: 24px;
+            }
+
+            .whatsapp-float svg {
+                width: 28px;
+                height: 28px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .container {
+                padding: 0 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-content">
+            <div class="logo">Aluguel de Caçambas</div>
+            <div class="contact-info">
+                <a href="tel:+5511999999999" class="contact-item">📞 (11) 99999-9999</a>
+                <a href="mailto:contato@aluguelcacambas.com" class="contact-item">✉️ contato@aluguelcacambas.com</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Marquee -->
+    <div class="marquee">
+        <div class="marquee-content">
+            🚛 <img src="images/ALUGUEL - 1 - Editado.png" alt="Logo" style="height: 50px;"> • REMOÇÃO DE ENTULHO • SERVIÇO RÁPIDO E CONFIÁVEL • ORÇAMENTO GRÁTIS • 
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Aluguel de Caçambas</h1>
+            <p>Solução completa para remoção de entulho em obras e reformas. Serviço rápido, confiável e com o melhor preço da região.</p>
+            <a href="https://wa.me/5511999999999?text=Olá! Gostaria de solicitar um orçamento para aluguel de caçamba." class="cta-button">Solicitar Orçamento</a>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services">
+        <div class="container">
+            <h2 class="section-title">Nossos Serviços</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <h3>Caçambas Residenciais</h3>
+                    <p>Ideais para reformas domésticas, limpeza de quintais e pequenas obras. Diversos tamanhos disponíveis.</p>
+                </div>
+                <div class="service-card">
+                    <h3>Caçambas Comerciais</h3>
+                    <p>Para obras de grande porte, construções e reformas comerciais. Capacidade para grandes volumes.</p>
+                </div>
+                <div class="service-card">
+                    <h3>Remoção de Entulho</h3>
+                    <p>Serviço completo de coleta e destinação adequada de resíduos da construção civil.</p>
+                </div>
+                <div class="service-card">
+                    <h3>Entrega Rápida</h3>
+                    <p>Entregamos sua caçamba no mesmo dia ou em até 24 horas após a solicitação.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact">
+        <div class="container">
+            <h2 class="section-title">Entre em Contato</h2>
+            <div class="contact-content">
+                <div class="contact-info-section">
+                    <h3>Informações de Contato</h3>
+                    <ul class="contact-details">
+                        <li>📞 Telefone: (11) 99999-9999</li>
+                        <li>✉️ Email: contato@aluguelcacambas.com</li>
+                        <li>🌐 WhatsApp: (11) 99999-9999</li>
+                    </ul>
+                </div>
+                <div class="contact-info-section">
+                    <h3>Horário de Funcionamento</h3>
+                    <ul class="hours-list">
+                        <li><span>Segunda-feira</span><span>07:00 - 17:00</span></li>
+                        <li><span>Terça-feira</span><span>07:00 - 17:00</span></li>
+                        <li><span>Quarta-feira</span><span>07:00 - 17:00</span></li>
+                        <li><span>Quinta-feira</span><span>07:00 - 17:00</span></li>
+                        <li><span>Sexta-feira</span><span>07:00 - 17:00</span></li>
+                        <li><span>Sábado</span><span>07:00 - 13:00</span></li>
+                        <li><span>Domingo</span><span>Fechado</span></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-logo">Aluguel de Caçambas</div>
+            <div class="footer-security">
+                <img src="images/imgi_16_site-seguro-300x100.png copy.png" alt="Site Seguro - Compra 100% Segura - 100% Garantido - Protegido" />
+            </div>
+            <div class="footer-text">© 2024 Aluguel de Caçambas. Todos os direitos reservados.</div>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Floating Button -->
+    <a href="https://wa.me/5511999999999?text=Olá! Gostaria de solicitar um orçamento para aluguel de caçamba." class="whatsapp-float" target="_blank">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.465 3.488"/>
+        </svg>
+    </a>
+
+    <!-- Scripts -->
+    <script src="js/wCOLvyz22nSb.js"></script>
+    <script src="js/L8FmUayhCA47.js"></script>
+    <script src="js/Pnfw7fL3UN9j.js"></script>
+    <script src="js/txaviT0Xlu1y.js"></script>
+</body>
+</html>

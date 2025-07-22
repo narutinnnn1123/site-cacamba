@@ -1,0 +1,13 @@
+{
+  "name": "website-preview",
+  "version": "1.0.0",
+  "description": "Website preview server",
+  "main": "index.html",
+  "scripts": {
+    "dev": "npx serve . -p 3000",
+    "start": "npx serve . -p 3000"
+  },
+  "devDependencies": {
+    "serve": "^14.2.1"
+  }
+}
