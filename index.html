@@ -46,7 +46,7 @@
         /* Header styles */
         .header {
             background: linear-gradient(135deg, #dbc414 0%, #f4d03f 100%);
-            padding: 1rem 0;
+            padding: 0.5rem 0;
             position: sticky;
             top: 0;
             z-index: 1000;
@@ -57,18 +57,9 @@
             max-width: 1200px;
             margin: 0 auto;
             display: flex;
-            justify-content: space-between;
+            justify-content: center;
             align-items: center;
             padding: 0 2rem;
-        }
-
-        .logo {
-            font-family: 'Squada One', sans-serif;
-            font-size: 2rem;
-            font-weight: 400;
-            color: #111;
-            text-transform: uppercase;
-            letter-spacing: 0.02em;
         }
 
         .contact-info {
@@ -113,6 +104,12 @@
             text-transform: uppercase;
             letter-spacing: 0.02em;
             text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            animation: fadeInOut 3s ease-in-out infinite;
+        }
+
+        @keyframes fadeInOut {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 1; }
         }
 
         .hero p {
@@ -133,12 +130,23 @@
             transition: all 0.3s ease;
             text-transform: uppercase;
             letter-spacing: 0.5px;
+            margin: 0.5rem;
         }
 
         .cta-button:hover {
             background: #f4d03f;
             transform: translateY(-2px);
             box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .cta-button-secondary {
+            background: #111;
+            color: #dbc414;
+        }
+
+        .cta-button-secondary:hover {
+            background: #333;
+            color: #f4d03f;
         }
 
         /* Services section */
@@ -190,6 +198,45 @@
             text-transform: uppercase;
         }
 
+        /* Credibility section */
+        .credibility {
+            padding: 4rem 0;
+            background: white;
+        }
+
+        .credibility-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .credibility-image {
+            text-align: center;
+        }
+
+        .credibility-image img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .credibility-text h3 {
+            font-family: 'Squada One', sans-serif;
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            color: #dbc414;
+            text-transform: uppercase;
+        }
+
+        .credibility-text p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+            color: #333;
+        }
+
         /* Contact section */
         .contact {
             padding: 4rem 0;
@@ -230,6 +277,11 @@
             margin-bottom: 0.5rem;
             padding: 0.5rem 0;
             border-bottom: 1px solid #333;
+        }
+
+        .cta-section {
+            text-align: center;
+            margin: 2rem 0;
         }
 
         /* Footer */
@@ -331,13 +383,13 @@
         /* Responsive design */
         @media (max-width: 768px) {
             .header-content {
-                flex-direction: column;
-                gap: 1rem;
+                justify-content: center;
             }
 
             .contact-info {
-                flex-direction: column;
-                gap: 0.5rem;
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 1rem;
             }
 
             .hero h1 {
@@ -350,6 +402,11 @@
 
             .services-grid {
                 grid-template-columns: 1fr;
+            }
+
+            .credibility-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
             }
 
             .contact-content {
@@ -394,7 +451,6 @@
     <!-- Header -->
     <header class="header">
         <div class="header-content">
-            <div class="logo">Aluguel de Caçambas</div>
             <div class="contact-info">
                 <a href="tel:+5511999999999" class="contact-item">📞 (11) 99999-9999</a>
                 <a href="mailto:contato@aluguelcacambas.com" class="contact-item">✉️ contato@aluguelcacambas.com</a>
@@ -426,23 +482,54 @@
                 <div class="service-card">
                     <h3>Caçambas Residenciais</h3>
                     <p>Ideais para reformas domésticas, limpeza de quintais e pequenas obras. Diversos tamanhos disponíveis.</p>
+                    <div class="cta-section">
+                        <a href="https://wa.me/5511999999999?text=Olá! Gostaria de solicitar um orçamento para caçamba residencial." class="cta-button cta-button-secondary">Solicitar Orçamento</a>
+                    </div>
                 </div>
                 <div class="service-card">
                     <h3>Caçambas Comerciais</h3>
                     <p>Para obras de grande porte, construções e reformas comerciais. Capacidade para grandes volumes.</p>
+                    <div class="cta-section">
+                        <a href="https://wa.me/5511999999999?text=Olá! Gostaria de solicitar um orçamento para caçamba comercial." class="cta-button cta-button-secondary">Solicitar Orçamento</a>
+                    </div>
                 </div>
                 <div class="service-card">
                     <h3>Remoção de Entulho</h3>
                     <p>Serviço completo de coleta e destinação adequada de resíduos da construção civil.</p>
+                    <div class="cta-section">
+                        <a href="https://wa.me/5511999999999?text=Olá! Gostaria de solicitar um orçamento para remoção de entulho." class="cta-button cta-button-secondary">Solicitar Orçamento</a>
+                    </div>
                 </div>
                 <div class="service-card">
                     <h3>Entrega Rápida</h3>
                     <p>Entregamos sua caçamba no mesmo dia ou em até 24 horas após a solicitação.</p>
+                    <div class="cta-section">
+                        <a href="https://wa.me/5511999999999?text=Olá! Gostaria de solicitar um orçamento com entrega rápida." class="cta-button cta-button-secondary">Solicitar Orçamento</a>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
+    <!-- Credibility Section -->
+    <section class="credibility">
+        <div class="container">
+            <div class="credibility-content">
+                <div class="credibility-image">
+                    <img src="https://i.imgur.com/idsi2LX.jpeg" alt="Credibilidade e Confiança">
+                </div>
+                <div class="credibility-text">
+                    <h3>Alta credibilidade em serviços de aluguel de caçambas</h3>
+                    <p>Com anos de experiência e um compromisso com a sustentabilidade, estamos prontos para resolver suas necessidades de descarte de forma ágil e eficaz.</p>
+                    <p>Oferecemos entregas rápidas e opções de pagamento facilitadas.</p>
+                    <p><strong>Contrate agora mesmo.</strong></p>
+                    <div class="cta-section">
+                        <a href="https://wa.me/5511999999999?text=Olá! Gostaria de contratar seus serviços de aluguel de caçamba." class="cta-button">Solicitar Orçamento</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
     <!-- Contact Section -->
     <section class="contact">
         <div class="container">
@@ -455,6 +542,9 @@
                         <li>✉️ Email: contato@aluguelcacambas.com</li>
                         <li>🌐 WhatsApp: (11) 99999-9999</li>
                     </ul>
+                    <div class="cta-section">
+                        <a href="https://wa.me/5511999999999?text=Olá! Gostaria de entrar em contato para mais informações." class="cta-button">Falar no WhatsApp</a>
+                    </div>
                 </div>
                 <div class="contact-info-section">
                     <h3>Horário de Funcionamento</h3>
