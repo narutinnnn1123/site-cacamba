@@ -1,589 +1,1293 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
+<!DOCTYPE html><html lang="pt-br"><head>
+    <!-- Google tag (gtag.js) -->
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=AW-17145528808"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'AW-17145528808');
+</script>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aluguel de Caçambas - Remoção de Entulho</title>
-    <meta name="description" content="Aluguel de caçambas para remoção de entulho. Serviço rápido e confiável para obras e reformas.">
-    
-    <!-- Preload critical resources -->
-    <link rel="preload" href="fonts/QSZAqrMu74mB.woff2" as="font" type="font/woff2" crossorigin>
-    <link rel="preload" href="fonts/TCNMDP1yBuew.woff2" as="font" type="font/woff2" crossorigin>
-    
-    <!-- Load polyfill first -->
-    <script src="js/radpack-polyfill.js"></script>
-    
+    <title>FR Coletas - Aluguel de Caçambas em Todo o Brasil</title>
+    <link rel="stylesheet" href="css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
     <style>
-        /* Font faces */
-        @font-face {
-            font-family: 'Squada One';
-            src: url('fonts/QSZAqrMu74mB.woff2') format('woff2');
-            font-weight: 400;
-            font-display: swap;
+        :root {
+            --primary: #FF9933;
+            --primary-dark: #0a7a55;
+            --secondary: #F05252;
+            --secondary-dark: #d03b3b;
+            --dark: #1A1A1A;
+            --light: #F9FAFB;
+            --gray: #4B5563;
+            --light-gray: #E5E7EB;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
         }
         
-        @font-face {
-            font-family: 'Share';
-            src: url('fonts/TCNMDP1yBuew.woff2') format('woff2');
-            font-weight: 400;
-            font-display: swap;
-        }
-
-        /* Reset and base styles */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-
+        
         body {
-            font-family: 'Share', Arial, sans-serif;
+            font-family: 'Roboto', sans-serif;
             line-height: 1.6;
-            color: #333;
-            background-color: #fff;
+            color: var(--dark);
+            background-color: #f5f5f5;
+            overflow-x: hidden;
         }
-
-        /* Header styles */
-        .header {
-            background: linear-gradient(135deg, #dbc414 0%, #f4d03f 100%);
-            padding: 0.5rem 0;
-            position: sticky;
+        
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700;
+            line-height: 1.2;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background-color: var(--secondary);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            text-align: center;
+            transition: var(--transition);
+            border: 2px solid var(--secondary);
+            font-size: 16px;
+            cursor: pointer;
+        }
+        
+        .btn:hover {
+            background-color: var(--secondary-dark);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(240, 82, 82, 0.2);
+        }
+        
+        .btn-primary {
+            background-color: var(--primary);
+            border-color: var(--primary);
+        }
+        
+        .btn-primary:hover {
+            background-color: var(--primary-dark);
+            box-shadow: 0 10px 20px rgba(14, 159, 110, 0.2);
+        }
+        
+        .btn-large {
+            padding: 15px 40px;
+            font-size: 18px;
+        }
+        
+        .section {
+            padding: 80px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+            position: relative;
+        }
+        
+        .section-title h2 {
+            font-size: 36px;
+            color: var(--dark);
+            margin-bottom: 15px;
+        }
+        
+        .section-title p {
+            color: var(--gray);
+            max-width: 700px;
+            margin: 0 auto;
+            font-size: 18px;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background-color: var(--primary);
+            border-radius: 2px;
+        }
+        
+        /* Header Styles */
+        header {
+            background-color: white;
+            box-shadow: var(--shadow);
+            position: fixed;
+            width: 100%;
             top: 0;
             z-index: 1000;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
         }
-
-        .header-content {
-            max-width: 1200px;
-            margin: 0 auto;
+        
+        .header-container {
             display: flex;
-            justify-content: center;
+            justify-content: space-between;
             align-items: center;
-            padding: 0 2rem;
+            padding: 15px 0;
         }
-
-        .contact-info {
+        
+        .logo {
             display: flex;
-            gap: 2rem;
             align-items: center;
         }
-
-        .contact-item {
-            color: #111;
+        
+        .logo img {
+            height: 50px;
+            margin-right: 10px;
+        }
+        
+        .logo h1 {
+            font-size: 24px;
+            color: var(--dark);
+        }
+        
+        .logo span {
+            color: var(--primary);
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 30px;
+        }
+        
+        nav ul li a {
             text-decoration: none;
+            color: var(--dark);
             font-weight: 500;
-            transition: color 0.3s ease;
+            transition: var(--transition);
+            position: relative;
         }
-
-        .contact-item:hover {
-            color: #333;
+        
+        nav ul li a:hover {
+            color: var(--primary);
         }
-
-        /* Hero section */
+        
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary);
+            transition: var(--transition);
+        }
+        
+        nav ul li a:hover::after {
+            width: 100%;
+        }
+        
+        .mobile-toggle {
+            display: none;
+            font-size: 24px;
+            cursor: pointer;
+        }
+        
+        /* Hero Section */
         .hero {
-            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('images/CAMBANCA.png');
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('images/caminhao1.png');
             background-size: cover;
             background-position: center;
-            min-height: 70vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
             color: white;
+            padding: 180px 0 100px;
+            text-align: center;
         }
-
+        
         .hero-content {
             max-width: 800px;
-            padding: 2rem;
-        }
-
-        .hero h1 {
-            font-family: 'Squada One', sans-serif;
-            font-size: 3.5rem;
-            margin-bottom: 1rem;
-            text-transform: uppercase;
-            letter-spacing: 0.02em;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
-            animation: fadeInOut 3s ease-in-out infinite;
-        }
-
-        @keyframes fadeInOut {
-            0%, 100% { opacity: 0.3; }
-            50% { opacity: 1; }
-        }
-
-        .hero p {
-            font-size: 1.25rem;
-            margin-bottom: 2rem;
-            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
-        }
-
-        .cta-button {
-            display: inline-block;
-            background: #dbc414;
-            color: #111;
-            padding: 1rem 2rem;
-            text-decoration: none;
-            border-radius: 5px;
-            font-weight: bold;
-            font-size: 1.1rem;
-            transition: all 0.3s ease;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            margin: 0.5rem;
-        }
-
-        .cta-button:hover {
-            background: #f4d03f;
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-        }
-
-        .cta-button-secondary {
-            background: #111;
-            color: #dbc414;
-        }
-
-        .cta-button-secondary:hover {
-            background: #333;
-            color: #f4d03f;
-        }
-
-        /* Services section */
-        .services {
-            padding: 4rem 0;
-            background: #f8f9fa;
-        }
-
-        .container {
-            max-width: 1200px;
             margin: 0 auto;
-            padding: 0 2rem;
         }
-
-        .section-title {
-            font-family: 'Squada One', sans-serif;
-            font-size: 2.5rem;
+        
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        
+        .hero p {
+            font-size: 20px;
+            margin-bottom: 30px;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        
+        .hero-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 30px;
+        }
+        
+        .offer-badge {
+            background-color: var(--secondary);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 30px;
+            display: inline-block;
+            font-weight: 600;
+            margin-top: 20px;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        
+        /* Benefits Section */
+        .benefits {
+            background-color: white;
+        }
+        
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+        
+        .benefit-card {
             text-align: center;
-            margin-bottom: 3rem;
-            color: #111;
-            text-transform: uppercase;
-            letter-spacing: 0.02em;
+            padding: 30px;
+            border-radius: 10px;
+            transition: var(--transition);
+            background-color: var(--light);
         }
-
+        
+        .benefit-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow);
+        }
+        
+        .benefit-icon {
+            font-size: 50px;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+        
+        .benefit-card h3 {
+            font-size: 22px;
+            margin-bottom: 15px;
+        }
+        
+        /* Services Section */
+        .services {
+            background-color: var(--light);
+        }
+        
         .services-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
+            gap: 30px;
         }
-
+        
         .service-card {
-            background: white;
-            padding: 2rem;
+            background-color: white;
             border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            text-align: center;
-            transition: transform 0.3s ease;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
         }
-
+        
         .service-card:hover {
-            transform: translateY(-5px);
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
         }
-
-        .service-card h3 {
-            font-family: 'Squada One', sans-serif;
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-            color: #dbc414;
-            text-transform: uppercase;
+        
+        .service-image {
+            height: 200px;
+            background-size: cover;
+            background-position: center;
         }
-
-        /* Credibility section */
-        .credibility {
-            padding: 4rem 0;
-            background: white;
+        
+        .service-content {
+            padding: 25px;
         }
-
-        .credibility-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 3rem;
-            align-items: center;
+        
+        .service-content h3 {
+            font-size: 24px;
+            margin-bottom: 10px;
+            color: var(--dark);
         }
-
-        .credibility-image {
-            text-align: center;
-        }
-
-        .credibility-image img {
-            max-width: 100%;
-            height: auto;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-        }
-
-        .credibility-text h3 {
-            font-family: 'Squada One', sans-serif;
-            font-size: 2rem;
-            margin-bottom: 1.5rem;
-            color: #dbc414;
-            text-transform: uppercase;
-        }
-
-        .credibility-text p {
-            font-size: 1.1rem;
-            line-height: 1.8;
-            margin-bottom: 1.5rem;
-            color: #333;
-        }
-
-        /* Contact section */
-        .contact {
-            padding: 4rem 0;
-            background: #111;
-            color: white;
-        }
-
-        .contact-content {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 3rem;
-        }
-
-        .contact-info-section h3 {
-            font-family: 'Squada One', sans-serif;
-            font-size: 1.8rem;
-            margin-bottom: 1.5rem;
-            color: #dbc414;
-            text-transform: uppercase;
-        }
-
-        .contact-details {
+        
+        .service-content ul {
             list-style: none;
+            margin: 20px 0;
         }
-
-        .contact-details li {
-            margin-bottom: 1rem;
-            font-size: 1.1rem;
+        
+        .service-content ul li {
+            margin-bottom: 10px;
+            padding-left: 25px;
+            position: relative;
         }
-
-        .hours-list {
-            list-style: none;
+        
+        .service-content ul li::before {
+            content: '\f00c';
+            font-family: 'Font Awesome 5 Free';
+            font-weight: 900;
+            position: absolute;
+            left: 0;
+            color: var(--primary);
         }
-
-        .hours-list li {
+        
+        .price {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--secondary);
+            margin: 20px 0;
+        }
+        
+        /* How It Works */
+        .process {
+            background-color: white;
+        }
+        
+        .process-steps {
             display: flex;
             justify-content: space-between;
-            margin-bottom: 0.5rem;
-            padding: 0.5rem 0;
-            border-bottom: 1px solid #333;
-        }
-
-        .cta-section {
-            text-align: center;
-            margin: 2rem 0;
-        }
-
-        /* Footer */
-        .footer {
-            background: #000;
-            color: white;
-            text-align: center;
-            padding: 2rem 0;
-        }
-
-        .footer-content {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 2rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
             flex-wrap: wrap;
-            gap: 1rem;
+            max-width: 1000px;
+            margin: 0 auto;
         }
-
-        .footer-logo {
-            font-family: 'Squada One', sans-serif;
-            font-size: 1.5rem;
-            color: #dbc414;
-            text-transform: uppercase;
+        
+        .step {
+            text-align: center;
+            width: 23%;
+            position: relative;
+            padding: 0 15px;
         }
-
-        .footer-security {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-        }
-
-        .footer-security img {
-            height: 50px;
-            width: auto;
-        }
-
-        .footer-text {
-            font-size: 0.9rem;
-            color: #ccc;
-        }
-
-        /* WhatsApp floating button */
-        .whatsapp-float {
-            position: fixed;
+        
+        .step-number {
             width: 60px;
             height: 60px;
-            bottom: 40px;
-            right: 40px;
-            background-color: #25d366;
-            color: #FFF;
-            border-radius: 50px;
-            text-align: center;
-            font-size: 30px;
-            box-shadow: 2px 2px 3px #999;
-            z-index: 100;
-            transition: all 0.3s ease;
+            background-color: var(--primary);
+            color: white;
+            border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            text-decoration: none;
+            font-size: 24px;
+            font-weight: 700;
+            margin: 0 auto 20px;
+            position: relative;
+            z-index: 2;
         }
-
-        .whatsapp-float:hover {
-            background-color: #128c7e;
-            transform: scale(1.1);
+        
+        .step::after {
+            content: '';
+            position: absolute;
+            top: 30px;
+            left: 60%;
+            width: 80%;
+            height: 3px;
+            background-color: var(--primary);
+            z-index: 1;
         }
-
-        .whatsapp-float svg {
-            width: 32px;
-            height: 32px;
-            fill: white;
+        
+        .step:last-child::after {
+            display: none;
         }
-
-        /* Marquee styles */
-        .marquee {
-            background: #dbc414;
-            padding: 1rem 0;
+        
+        .step h3 {
+            font-size: 20px;
+            margin-bottom: 15px;
+        }
+        
+        /* Testimonials */
+        .testimonials {
+            background-color: var(--light);
+        }
+        
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .testimonial-card {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+            position: relative;
+        }
+        
+        .testimonial-card::before {
+            content: '\f10d';
+            font-family: 'Font Awesome 5 Free';
+            font-weight: 900;
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            font-size: 40px;
+            color: var(--light-gray);
+            opacity: 0.5;
+        }
+        
+        .testimonial-content {
+            margin-bottom: 20px;
+            font-style: italic;
+            color: var(--gray);
+        }
+        
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+        }
+        
+        .author-image {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: var(--light-gray);
+            margin-right: 15px;
             overflow: hidden;
-            white-space: nowrap;
         }
-
-        .marquee-content {
-            display: inline-block;
-            animation: scroll 20s linear infinite;
-            font-family: 'Squada One', sans-serif;
-            font-size: 1.2rem;
-            color: #111;
-            text-transform: uppercase;
+        
+        .author-info h4 {
+            font-size: 18px;
+            margin-bottom: 5px;
         }
-
-        @keyframes scroll {
-            0% { transform: translateX(100%); }
-            100% { transform: translateX(-100%); }
+        
+        .author-info p {
+            color: var(--gray);
+            font-size: 14px;
         }
-
-        /* Responsive design */
+        
+        /* Coverage */
+        .coverage {
+            background-color: white;
+        }
+        
+        .coverage-content {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            align-items: center;
+        }
+        
+        .coverage-map {
+            flex: 1;
+            min-width: 300px;
+            height: 400px;
+            background: #e9ecef;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            color: var(--gray);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .coverage-map::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: url('https://images.unsplash.com/photo-1549918864-48ac978761a4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80') center/cover no-repeat;
+            opacity: 0.3;
+        }
+        
+        .coverage-list {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .coverage-list h3 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: var(--dark);
+        }
+        
+        .cities {
+            column-count: 2;
+            column-gap: 30px;
+        }
+        
+        .cities ul {
+            list-style: none;
+            margin-bottom: 20px;
+        }
+        
+        .cities ul li {
+            margin-bottom: 10px;
+            padding-left: 25px;
+            position: relative;
+        }
+        
+        .cities ul li::before {
+            content: '\f3c5';
+            font-family: 'Font Awesome 5 Free';
+            font-weight: 900;
+            position: absolute;
+            left: 0;
+            color: var(--primary);
+        }
+        
+        /* CTA Section */
+        .cta {
+            background: linear-gradient(to right, var(--primary), var(--primary-dark));
+            color: white;
+            text-align: center;
+            padding: 80px 0;
+        }
+        
+        .cta h2 {
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+        
+        .cta p {
+            font-size: 20px;
+            max-width: 700px;
+            margin: 0 auto 30px;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 60px 0 20px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-column h3 {
+            font-size: 20px;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background-color: var(--primary);
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 12px;
+        }
+        
+        .footer-column ul li a {
+            color: #b0b0b0;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        
+        .footer-column ul li a:hover {
+            color: white;
+            padding-left: 5px;
+        }
+        
+        .contact-info li {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 15px;
+        }
+        
+        .contact-info li i {
+            color: var(--primary);
+            margin-right: 10px;
+            margin-top: 5px;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: #333;
+            color: white;
+            border-radius: 50%;
+            transition: var(--transition);
+        }
+        
+        .social-links a:hover {
+            background-color: var(--primary);
+            transform: translateY(-5px);
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid #333;
+            font-size: 14px;
+            color: #b0b0b0;
+        }
+        
+        /* WhatsApp Button */
+        .whatsapp-btn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            background-color: #25D366;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 30px;
+            text-decoration: none;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            z-index: 999;
+            transition: var(--transition);
+            animation: pulse 2s infinite;
+        }
+        
+        .whatsapp-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+        }
+        
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            .step {
+                width: 48%;
+                margin-bottom: 40px;
+            }
+            
+            .step::after {
+                display: none;
+            }
+        }
+        
         @media (max-width: 768px) {
-            .header-content {
-                justify-content: center;
+            .mobile-toggle {
+                display: block;
             }
-
-            .contact-info {
-                flex-wrap: wrap;
-                justify-content: center;
-                gap: 1rem;
-            }
-
-            .hero h1 {
-                font-size: 2.5rem;
-            }
-
-            .hero p {
-                font-size: 1.1rem;
-            }
-
-            .services-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .credibility-content {
-                grid-template-columns: 1fr;
-                gap: 2rem;
-            }
-
-            .contact-content {
-                grid-template-columns: 1fr;
-            }
-
-            .footer-content {
+            
+            nav ul {
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background-color: white;
                 flex-direction: column;
-                text-align: center;
+                box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
+                padding: 20px 0;
+                transform: translateY(-150%);
+                transition: var(--transition);
             }
-
-            .whatsapp-float {
-                width: 50px;
-                height: 50px;
-                bottom: 20px;
-                right: 20px;
-                font-size: 24px;
+            
+            nav ul.active {
+                transform: translateY(0);
             }
-
-            .whatsapp-float svg {
-                width: 28px;
-                height: 28px;
+            
+            nav ul li {
+                margin: 0;
+                padding: 10px 20px;
             }
-        }
-
-        @media (max-width: 480px) {
+            
             .hero h1 {
-                font-size: 2rem;
+                font-size: 36px;
             }
-
-            .section-title {
-                font-size: 2rem;
+            
+            .hero p {
+                font-size: 18px;
             }
-
-            .container {
-                padding: 0 1rem;
+            
+            .hero-buttons {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .btn {
+                width: 100%;
+            }
+            
+            .section {
+                padding: 60px 0;
+            }
+            
+            .section-title h2 {
+                font-size: 30px;
+            }
+            
+            .step {
+                width: 100%;
+            }
+            
+            .cities {
+                column-count: 1;
             }
         }
     </style>
 </head>
 <body>
+    
+    <!-- ESTILO -->
+<style>
+.overlay {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100vw; height: 100vh;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 9998;
+}
+
+.popup {
+  position: fixed;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  background: white;
+  border: 3px solid orange;
+  border-radius: 15px;
+  padding: 30px;
+  width: 90%;
+  max-width: 420px;
+  text-align: center;
+  z-index: 9999;
+  font-family: 'Poppins', sans-serif;
+  animation: fadeIn 0.4s ease;
+}
+
+.popup h2 {
+  color: orange;
+  margin-bottom: 10px;
+}
+
+.popup p {
+  font-size: 16px;
+  color: #444;
+  margin-bottom: 20px;
+}
+
+.popup button {
+  background-color: orange;
+  color: white;
+  border: none;
+  padding: 12px 25px;
+  font-size: 16px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.loader {
+  border: 4px solid #eee;
+  border-top: 4px solid orange;
+  border-radius: 50%;
+  width: 40px; height: 40px;
+  animation: spin 1s linear infinite;
+  margin: 20px auto;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translate(-50%, -60%); }
+  to { opacity: 1; transform: translate(-50%, -50%); }
+}
+</style>
+<div class="overlay" style="display:none;"></div>
+<div id="popupBuscaLoja" class="popup" style="display:none;">
+  <h2 id="tituloPopup">Verificando sua Localização ...</h2>
+  <p id="infoLocal">Por favor, aguarde um momento.</p>
+  <div id="loader" class="loader"></div>
+  <button id="botaoPedido" style="display:none;" onclick="fecharPopup()">Fazer Pedido Agora</button>
+</div>
+
+
+
+<script>
+function fecharPopup() {
+  document.getElementById("popupBuscaLoja").style.display = "none";
+  document.querySelector(".overlay").style.display = "none";
+  sessionStorage.setItem('popupExibido', 'sim');
+}
+
+window.onload = () => {
+  if (sessionStorage.getItem('popupExibido')) return;
+
+  document.getElementById("popupBuscaLoja").style.display = "block";
+  document.querySelector(".overlay").style.display = "block";
+
+  const info = document.getElementById("infoLocal");
+  const loader = document.getElementById("loader");
+  const botao = document.getElementById("botaoPedido");
+  const titulo = document.getElementById("tituloPopup");
+
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(async position => {
+      const lat = position.coords.latitude;
+      const lon = position.coords.longitude;
+
+      try {
+        const resposta = await fetch(`https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lon}`);
+        const dados = await resposta.json();
+        const cidade = dados.address.city || dados.address.town || dados.address.village || dados.address.state || "sua região";
+
+        titulo.innerText = "Atendemos a sua região!";
+        info.innerHTML = `Estamos a apenas <strong>7,4 km</strong> de você em <strong>${cidade}</strong>.`;
+      } catch (e) {
+        titulo.innerText = "Atendemos a sua região!";
+        info.innerHTML = `Estamos a apenas <strong>7,4 km</strong> de você.`;
+      }
+
+      loader.style.display = "none"; 
+      botao.style.display = "inline-block";
+    }, () => {
+      titulo.innerText = "Atendemos a sua região!";
+      info.innerHTML = `Estamos a  <strong>7,6 KM </strong> de você!`;
+      loader.style.display = "none";
+      botao.style.display = "inline-block";
+    });
+  } else {
+    titulo.innerText = "Seu navegador não suporta geolocalização";
+    info.innerText = "Mas atendemos a sua região!";
+    loader.style.display = "none";
+    botao.style.display = "inline-block";
+  }
+};
+</script>
+    <!-- WhatsApp Button -->
+    <a href="https://api.whatsapp.com/send/?phone=5511919402648&text=Solicito+Atendimento.&type=phone_number&app_absent=0" class="whatsapp-btn">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
     <!-- Header -->
-    <header class="header">
-        <div class="header-content">
-            <div class="contact-info">
-                <a href="tel:+5511999999999" class="contact-item">📞 (11) 99999-9999</a>
-                <a href="mailto:contato@aluguelcacambas.com" class="contact-item">✉️ contato@aluguelcacambas.com</a>
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <i class="fas fa-truck-loading" style="font-size: 36px; color: var(--primary); margin-right: 10px;"></i>
+                <h1>FR <span>COLETAS</span></h1>
             </div>
+            
+            <div class="mobile-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+            
+            <nav>
+                <ul>
+                    <li><a href="#home">Início</a></li>
+                    <li><a href="#servicos">Serviços</a></li>
+                    <li><a href="#caçambas">Caçambas</a></li>
+                    <li><a href="#como-funciona">Como Funciona</a></li>
+                    <li><a href="#cobertura">Cobertura</a></li>
+                    <li><a href="#contato">Contato</a></li>
+                </ul>
+            </nav>
         </div>
     </header>
 
-    <!-- Marquee -->
-    <div class="marquee">
-        <div class="marquee-content">
-            🚛 <img src="images/ALUGUEL - 1 - Editado.png" alt="Logo" style="height: 50px;"> • REMOÇÃO DE ENTULHO • SERVIÇO RÁPIDO E CONFIÁVEL • ORÇAMENTO GRÁTIS • 
-        </div>
-    </div>
-
     <!-- Hero Section -->
-    <section class="hero">
-        <div class="hero-content">
-            <h1>Aluguel de Caçambas</h1>
-            <p>Solução completa para remoção de entulho em obras e reformas. Serviço rápido, confiável e com o melhor preço da região.</p>
-            <a href="https://wa.me/5511999999999?text=Olá! Gostaria de solicitar um orçamento para aluguel de caçamba." class="cta-button">Solicitar Orçamento</a>
+    <section class="hero" id="home">
+        <div class="container hero-content">
+            <h1>Aluguel de Caçambas em todo o Brasil</h1>
+            <p>Entregamos em até 24h • Preços Imperdiveis • Descarte sustentável</p>
+            
+            <div class="offer-badge">
+                <i class="fas fa-gift"></i> 10% OFF na primeira locação
+            </div>
+            
+            <div class="hero-buttons">
+                <a href="#caçambas" class="btn btn-primary btn-large">
+                    <i class="fas fa-truck"></i> Ver Caçambas
+                </a>
+                <a href="https://api.whatsapp.com/send/?phone=5511919402648&text=Solicito+Atendimento.&type=phone_number&app_absent=0" class="btn btn-large">
+                    <i class="fab fa-whatsapp"></i> WhatsApp
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section class="benefits section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Por que escolher a FR Coletas?</h2>
+                <p>Oferecemos o melhor serviço de aluguel de caçambas com qualidade e preço justo</p>
+            </div>
+             <div style="overflow: hidden; border-radius: 10px; box-shadow: var(--shadow);">
+        <img src="images/caminhaofr.png" alt="Caçamba cheia de entulho" style="width: 100%; height: 200px; object-fit: cover;">
+      </div>
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <h3>Entrega Rápida</h3>
+                    <p>Entregamos sua caçamba em até 24 horas após a confirmação do pedido.</p>
+                </div>
+                
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-tag"></i>
+                    </div>
+                    <h3>Preço Fixo</h3>
+                    <p>Sem taxas ocultas. O preço que você vê é o preço que você paga.</p>
+                </div>
+                
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-leaf"></i>
+                    </div>
+                    <h3>Descarte Ecológico</h3>
+                    <p>Todos os resíduos são descartados de forma sustentável e responsável.</p>
+                </div>
+                
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-award"></i>
+                    </div>
+                    <h3>Qualidade Garantida</h3>
+                    <p>Caçambas novas e em perfeito estado para atender sua necessidade.</p>
+                </div>
+            </div>
         </div>
     </section>
 
     <!-- Services Section -->
-    <section class="services">
+    <section class="services section" id="servicos">
         <div class="container">
-            <h2 class="section-title">Nossos Serviços</h2>
+            <div class="section-title">
+                <h2>Nossos Serviços</h2>
+                <p>Oferecemos soluções completas para gestão de resíduos de construção</p>
+            </div>
+            
             <div class="services-grid">
                 <div class="service-card">
-                    <h3>Caçambas Residenciais</h3>
-                    <p>Ideais para reformas domésticas, limpeza de quintais e pequenas obras. Diversos tamanhos disponíveis.</p>
-                    <div class="cta-section">
-                        <a href="https://wa.me/5511999999999?text=Olá! Gostaria de solicitar um orçamento para caçamba residencial." class="cta-button cta-button-secondary">Solicitar Orçamento</a>
+                    <div class="service-image" style="background-color: #e9ecef; display: flex; align-items: center; justify-content: center;">
+                        <i class="fas fa-dumpster" style="font-size: 80px; color: var(--primary);"></i>
+                    </div>
+                    <div class="service-content">
+                        <h3>Aluguel de Caçambas</h3>
+                        <p>Caçambas de diversos tamanhos para atender desde pequenas reformas até grandes obras.</p>
+                        <a href="#caçambas" class="btn">Ver Tamanhos</a>
                     </div>
                 </div>
+                
                 <div class="service-card">
-                    <h3>Caçambas Comerciais</h3>
-                    <p>Para obras de grande porte, construções e reformas comerciais. Capacidade para grandes volumes.</p>
-                    <div class="cta-section">
-                        <a href="https://wa.me/5511999999999?text=Olá! Gostaria de solicitar um orçamento para caçamba comercial." class="cta-button cta-button-secondary">Solicitar Orçamento</a>
+                    <div class="service-image" style="background-color: #e9ecef; display: flex; align-items: center; justify-content: center;">
+                        <i class="fas fa-trash-alt" style="font-size: 80px; color: var(--primary);"></i>
+                    </div>
+                    <div class="service-content">
+                        <h3>Coleta de Entulho</h3>
+                        <p>Coletamos seu entulho de construção de forma rápida e eficiente.</p>
+                        <a href="https://api.whatsapp.com/send/?phone=5511919402648&text=Solicito+Atendimento.&type=phone_number&app_absent=0" class="btn">Solicitar Coleta</a>
                     </div>
                 </div>
+                
                 <div class="service-card">
-                    <h3>Remoção de Entulho</h3>
-                    <p>Serviço completo de coleta e destinação adequada de resíduos da construção civil.</p>
-                    <div class="cta-section">
-                        <a href="https://wa.me/5511999999999?text=Olá! Gostaria de solicitar um orçamento para remoção de entulho." class="cta-button cta-button-secondary">Solicitar Orçamento</a>
+                    <div class="service-image" style="background-color: #e9ecef; display: flex; align-items: center; justify-content: center;">
+                        <i class="fas fa-building" style="font-size: 80px; color: var(--primary);"></i>
                     </div>
-                </div>
-                <div class="service-card">
-                    <h3>Entrega Rápida</h3>
-                    <p>Entregamos sua caçamba no mesmo dia ou em até 24 horas após a solicitação.</p>
-                    <div class="cta-section">
-                        <a href="https://wa.me/5511999999999?text=Olá! Gostaria de solicitar um orçamento com entrega rápida." class="cta-button cta-button-secondary">Solicitar Orçamento</a>
+                    <div class="service-content">
+                        <h3>Demolições</h3>
+                        <p>Serviço completo de demolição controlada para sua obra.</p>
+                        <a href="https://api.whatsapp.com/send/?phone=5511919402648&text=Solicito+Atendimento.&type=phone_number&app_absent=0" class="btn">Solicitar Orçamento</a>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Credibility Section -->
-    <section class="credibility">
+    <!-- Caçambas Section -->
+    <section class="services section" id="caçambas">
         <div class="container">
-            <div class="credibility-content">
-                <div class="credibility-image">
-                    <img src="https://i.imgur.com/idsi2LX.jpeg" alt="Credibilidade e Confiança">
-                </div>
-                <div class="credibility-text">
-                    <h3>Alta credibilidade em serviços de aluguel de caçambas</h3>
-                    <p>Com anos de experiência e um compromisso com a sustentabilidade, estamos prontos para resolver suas necessidades de descarte de forma ágil e eficaz.</p>
-                    <p>Oferecemos entregas rápidas e opções de pagamento facilitadas.</p>
-                    <p><strong>Contrate agora mesmo.</strong></p>
-                    <div class="cta-section">
-                        <a href="https://wa.me/5511999999999?text=Olá! Gostaria de contratar seus serviços de aluguel de caçamba." class="cta-button">Solicitar Orçamento</a>
-                    </div>
-                </div>
+            <div class="section-title">
+                <h2>Nossas Caçambas</h2>
+                  <div style="overflow: hidden; border-radius: 10px; box-shadow: var(--shadow);">
+        <img src="images/cacambaspilha.png" alt="Caçamba cheia de entulho" style="width: 100%; height: 200px; object-fit: cover;">
+      </div>
+                <p>Conheça os modelos disponíveis para locação</p>
             </div>
-        </div>
-    </section>
-    <!-- Contact Section -->
-    <section class="contact">
-        <div class="container">
-            <h2 class="section-title">Entre em Contato</h2>
-            <div class="contact-content">
-                <div class="contact-info-section">
-                    <h3>Informações de Contato</h3>
-                    <ul class="contact-details">
-                        <li>📞 Telefone: (11) 99999-9999</li>
-                        <li>✉️ Email: contato@aluguelcacambas.com</li>
-                        <li>🌐 WhatsApp: (11) 99999-9999</li>
-                    </ul>
-                    <div class="cta-section">
-                        <a href="https://wa.me/5511999999999?text=Olá! Gostaria de entrar em contato para mais informações." class="cta-button">Falar no WhatsApp</a>
+            
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-image" style="background-color: #4a6572; display: flex; align-items: center; justify-content: center; color: white; flex-direction: column;">
+                        <i class="fas fa-dumpster" style="font-size: 80px;"></i>
+                        <h3 style="color: white; margin-top: 15px;">Caçamba 3m³</h3>
+                    </div>
+                    <div class="service-content">
+                        <h3>Caçamba Mini</h3>
+                        <p>Ideal para pequenas reformas e descarte de entulho residencial.</p>
+                        <ul>
+                            <li>Capacidade: 3 metros cúbicos</li>
+                            <li>Até 1.5 toneladas</li>
+                            <li>Reformas e pequenas obras</li>
+                            <li>Pequenas quantidades de entulho</li>
+                        </ul>
+                        <div class="price">R$ 180,00</div>
+                        <a href="https://api.whatsapp.com/send/?phone=5511919402648&text=Solicito+Atendimento.&type=phone_number&app_absent=0" class="btn">Alugar Agora</a>
                     </div>
                 </div>
-                <div class="contact-info-section">
-                    <h3>Horário de Funcionamento</h3>
-                    <ul class="hours-list">
-                        <li><span>Segunda-feira</span><span>07:00 - 17:00</span></li>
-                        <li><span>Terça-feira</span><span>07:00 - 17:00</span></li>
-                        <li><span>Quarta-feira</span><span>07:00 - 17:00</span></li>
-                        <li><span>Quinta-feira</span><span>07:00 - 17:00</span></li>
-                        <li><span>Sexta-feira</span><span>07:00 - 17:00</span></li>
-                        <li><span>Sábado</span><span>07:00 - 13:00</span></li>
-                        <li><span>Domingo</span><span>Fechado</span></li>
-                    </ul>
+                
+                <div class="service-card">
+                    <div class="service-image" style="background-color: #344955; display: flex; align-items: center; justify-content: center; color: white; flex-direction: column;">
+                        <i class="fas fa-dumpster" style="font-size: 80px;"></i>
+                        <h3 style="color: white; margin-top: 15px;">Caçamba 5m³</h3>
+                    </div>
+                    <div class="service-content">
+                        <h3>Caçamba Padrão</h3>
+                        <p>Perfeita para reformas médias e pequenas construções.</p>
+                        <ul>
+                            <li>Capacidade: 5 metros cúbicos</li>
+                            <li>Até 3 toneladas</li>
+                            <li>Reformas médias</li>
+                            <li>Construções pequenas</li>
+                        </ul>
+                        <div class="price">R$ 340,00</div>
+                        <a href="https://api.whatsapp.com/send/?phone=5511919402648&text=Solicito+Atendimento.&type=phone_number&app_absent=0" class="btn">Alugar Agora</a>
+                    </div>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-image" style="background-color: #232f34; display: flex; align-items: center; justify-content: center; color: white; flex-direction: column;">
+                        <i class="fas fa-dumpster" style="font-size: 80px;"></i>
+                        <h3 style="color: white; margin-top: 15px;">Caçamba 7m³</h3>
+                    </div>
+                    <div class="service-content">
+                        <h3>Caçamba Grande</h3>
+                        <p>Para grandes obras, construções e demolições completas.</p>
+                        <ul>
+                            <li>Capacidade: 7 metros cúbicos</li>
+                            <li>Até 5 toneladas</li>
+                            <li>Grandes obras e construções</li>
+                            <li>Demolições completas</li>
+                        </ul>
+                        <div class="price">R$ 400,00</div>
+                        <a href="https://api.whatsapp.com/send/?phone=5511919402648&text=Solicito+Atendimento.&type=phone_number&app_absent=0" class="btn">Alugar Agora</a>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
+    <!-- How It Works -->
+    <section class="process section" id="como-funciona">
+        <div class="container">
+            <div class="section-title">
+                <h2>Como Funciona</h2>
+                <p>Alugue sua caçamba em apenas 4 passos simples</p>
+            </div>
+            
+            <div class="process-steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h3>Solicitação</h3>
+                    <p>Entre em contato por telefone ou WhatsApp e faça sua solicitação.</p>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h3>Escolha a Caçamba</h3>
+                    <p>Selecione o tamanho ideal de caçamba para sua necessidade.</p>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h3>Entrega</h3>
+                    <p>Entregamos a caçamba no local indicado em até 24 horas.</p>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <h3>Coleta</h3>
+                    <p>Após o uso, coletamos a caçamba e fazemos o descarte adequado.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Coverage Area -->
+    <section class="coverage section" id="cobertura">
+        <div class="container">
+            <div class="section-title">
+                <h2>Área de Cobertura</h2>
+                <p>Atendimento em toda Região Nacional</p>
+            </div>
+            
+            <div class="coverage-content">
+                <div class="coverage-map">
+                    <i class="fas fa-map-marked-alt" style="font-size: 48px; color: var(--primary); z-index: 2;"></i>
+                </div>
+                
+                <div class="coverage-list">
+                    <h3>Estados Atendidas</h3>
+                    <div class="cities">
+                        <ul>
+                            <li>São Paulo</li>
+                            <li>Rio de Janeiro</li>
+                            <li>Minas Gerais</li>
+                            <li>Bahia</li>
+                            <li>Paraná</li>
+                            <li>Rio Grande do Sul</li>
+                        </ul>
+                        <ul>
+                            <li>Pernambuco</li>
+                            <li>Ceará</li>
+                            <li>Pará</li>
+                            <li>Goiás</li>
+                            <li>Santa Catarina</li>
+                            <li>Amazonas</li>
+                        </ul>
+                    </div>
+                    <p style="margin-top: 20px; font-style: italic;">Não encontrou seu estado? Entre em contato para verificar disponibilidade!</p>
+                    <a href="https://api.whatsapp.com/send/?phone=5511919402648&text=Solicito+Atendimento.&type=phone_number&app_absent=0" class="btn" style="margin-top: 20px;">
+                        <i class="fab fa-whatsapp"></i> Verificar Cobertura
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta">
+        <div class="container">
+            <h2>Pronto para alugar sua caçamba?</h2>
+            <p>Entre em contato agora mesmo e garanta 10% de desconto na sua primeira locação!</p>
+            <a href="https://api.whatsapp.com/send/?phone=5511919402648&text=Solicito+Atendimento.&type=phone_number&app_absent=0" class="btn btn-large">
+                <i class="fab fa-whatsapp"></i> Falar no WhatsApp
+            </a>
+        </div>
+    </section>
+<section class="section" style="background-color: #fff;">
+  <div class="container">
+    <div class="section-title">
+      <h2>Veja Nossas Caçambas em Ação</h2>
+      <p>Fotos reais de clientes satisfeitos usando nossas caçambas</p>
+    </div>
+
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px;">
+      <div style="overflow: hidden; border-radius: 10px; box-shadow: var(--shadow);">
+        <img src="images/cacamba1.jpeg" alt="Caçamba em uso 1" style="width: 100%; height: 200px; object-fit: cover;">
+      </div>
+      <div style="overflow: hidden; border-radius: 10px; box-shadow: var(--shadow);">
+        <img src="images/cacamba2.jpeg" alt="Caçamba em obra" style="width: 100%; height: 200px; object-fit: cover;">
+      </div>
+      <div style="overflow: hidden; border-radius: 10px; box-shadow: var(--shadow);">
+        <img src="images/cacambas3.png" alt="Caçamba estacionada" style="width: 100%; height: 200px; object-fit: cover;">
+      </div>
+      <div style="overflow: hidden; border-radius: 10px; box-shadow: var(--shadow);">
+        <img src="images/cacamba4.png" alt="Caçamba cheia de entulho" style="width: 100%; height: 200px; object-fit: cover;">
+      </div>
+    </div>
+  </div>
+</section>
     <!-- Footer -->
-    <footer class="footer">
-        <div class="footer-content">
-            <div class="footer-logo">Aluguel de Caçambas</div>
-            <div class="footer-security">
-                <img src="images/imgi_16_site-seguro-300x100.png copy.png" alt="Site Seguro - Compra 100% Segura - 100% Garantido - Protegido" />
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>FR Coletas</h3>
+                    <p>Soluções completas em aluguel de caçambas e gestão de resíduos de construção.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-whatsapp"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Links Rápidos</h3>
+                    <ul>
+                        <li><a href="#home">Início</a></li>
+                        <li><a href="#servicos">Serviços</a></li>
+                        <li><a href="#caçambas">Caçambas</a></li>
+                        <li><a href="#como-funciona">Como Funciona</a></li>
+                        <li><a href="#cobertura">Cobertura</a></li>
+                    </ul>
+                </div>
+                
+               
+                
+                <div class="footer-column">
+                    <h3>Horário de Funcionamento</h3>
+                    <ul>
+                        <li><strong>Segunda - Sexta:</strong> 7h - 18h</li>
+                        <li><strong>Sábado:</strong> 7h - 12h</li>
+                        <li><strong>Domingo:</strong> Fechado</li>
+                        <li><strong>Feriados:</strong> Consultar</li>
+                    </ul>
+                </div>
             </div>
-            <div class="footer-text">© 2024 Aluguel de Caçambas. Todos os direitos reservados.</div>
+            
+            <div class="footer-bottom">
+                <p>� 2014 FR Coletas - Todos os direitos reservados.</p>
+            </div>
         </div>
     </footer>
 
-    <!-- WhatsApp Floating Button -->
-    <a href="https://wa.me/5511999999999?text=Olá! Gostaria de solicitar um orçamento para aluguel de caçamba." class="whatsapp-float" target="_blank">
-        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.465 3.488"/>
-        </svg>
-    </a>
+    <script>
+        // Mobile Navigation Toggle
+        const mobileToggle = document.querySelector('.mobile-toggle');
+        const navMenu = document.querySelector('nav ul');
+        
+        mobileToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+        });
+        
+        // Smooth Scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                navMenu.classList.remove('active');
+                
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+        
+        // WhatsApp Button Animation
+        const whatsappBtn = document.querySelector('.whatsapp-btn');
+        
+        setInterval(() => {
+            whatsappBtn.style.transform = 'scale(1.1)';
+            setTimeout(() => {
+                whatsappBtn.style.transform = 'scale(1)';
+            }, 300);
+        }, 5000);
+    </script>
 
-    <!-- Scripts -->
-    <script src="js/wCOLvyz22nSb.js"></script>
-    <script src="js/L8FmUayhCA47.js"></script>
-    <script src="js/Pnfw7fL3UN9j.js"></script>
-    <script src="js/txaviT0Xlu1y.js"></script>
-</body>
-</html>
+</body></html>
